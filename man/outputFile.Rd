@@ -7,18 +7,19 @@
 outputFile(obj)
 }
 \arguments{
-\item{obj}{A SBGNview object.}
+\item{obj}{A SBGNview class object.}
 }
 \value{
-A string. The output file information. The same as parameter "output.file" when running \code{\link{SBGNview}}
+A string. The output file information.
 }
 \description{
 Retrieve output file information from a SBGNview object
 }
 \details{
-This function prints the output file path recorded in a SBGNview object. When printing the SBGNview object, output image files will be generated using the output file.
+This function prints the output file path recorded in a SBGNview object.
 }
 \examples{
-data("SBGNview.obj" )
+\dontrun{
 outputFile(SBGNview.obj) 
+}
 }

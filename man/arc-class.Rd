@@ -3,45 +3,35 @@
 \docType{class}
 \name{arc-class}
 \alias{arc-class}
-\title{An object to store arc information.}
+\title{An object to store arc information}
 \description{
-An object to store arc information.
+An object to store arc information
 }
 \details{
-Arc information comes from two sources:1. SBGN-ML file's "arc" element ("source", "target", coordinates etc.). 2. Parameters specified when running \code{\link{SBGNview}}.  User can modify arc objects to change the way how it is rendered. Some of the slots/parameters in arc object controls similar graph features such as text font, line width/color etc. 
-
-The priority is determined in the following sequence: 
-
-1. arc@edge
-
-2. Parameters in slot "arc@global.parameters.list" 
-
-3. Slots in arc object: stroke.opacity, fill.color etc.
+Information in an 'arc' object comes from two sources: 1. SBGN-ML file's 'arc' element ('source', 'target', coordinates etc.). 2. Parameters specified when running function \code{\link{SBGNview}}.  User can modify arc objects to change the way how they are rendered. See the "arcs.user" argument in \code{\link{renderSbgn}}.
 }
 \section{Slots}{
 
 \describe{
-\item{\code{target,source,id,arc.class}}{A character string. Information extracted from element "arc"}
+\item{\code{target,source,id,arc.class}}{A character string. Information extracted from element 'arc'.}
 
-\item{\code{start.x,start.y,end.x,end.y}}{Numeric. Information extracted from elements "start", "end" or "next"}
+\item{\code{start.x,start.y,end.x,end.y}}{Numeric. Information extracted from elements 'start', 'end' or 'next'.}
 
-\item{\code{stroke.opacity}}{Numeric. Controls the line of an arc (not tip of arc).}
+\item{\code{stroke.opacity}}{Numeric. Controls the line of an arc (not tip of the arc).}
 
-\item{\code{global.parameters.list}}{A list. This is a copy of parameters in '...' of SBGNview. It can affect glyph behavior if the element has a corresponding feature of the arc. For example "edge.tip.size" affects the arc but "compartment.opacity" doesn't. See details for more information. This will be improved in future versions to remove unrelated parameters.}
+\item{\code{parameters.list}}{A list. The parameters.list slot is a copy of the global.parameters.list. The global.parameters.list contains the '...' parameters passed into \code{\link{SBGNview}} which will be used by \code{\link{renderSbgn}}. By default this slot for all arc objects in the output SBGNview object will be an empty list. You can add named elements to this slot to customize each individual arc. For information about which parameters can be set in the parameters.list slot, see the arguments in \code{\link{renderSbgn}}. A customized list of arc objects can be passed as input into SBGNview function using the ‘arcs.user’ argument (see \code{\link{renderSbgn}} for more information).}
 
-\item{\code{edge}}{A list. An arc in SBGN map normally consists of a line and a tip shape at the end of the line. This list holds variables that controls arc properties. Available elements can be accessed as follow:
-
-         The following three paremeters control the line.\cr
-            arc@edge$line.stroke.color\cr
-            arc@edge$line.stroke.opacity\cr
-            arc@edge$line.width\cr
-                    
-                    
-         The following five paremeters control the tip.\cr
-            arc@edge$tip.stroke.opacity\cr
-            arc@edge$tip.stroke.color\cr
-            arc@edge$tip.stroke.width\cr
-            arc@edge$tip.fill.color\cr
-            arc@edge$tip.fill.opacity\cr}
+\item{\code{edge}}{A list. An arc in SBGN map normally consists of a line and a tip at the end of the line. This list holds variables that controls arc properties. Available elements can be accessed as follow:
+The following three parameters control the line:\cr
+   arc@edge$line.stroke.color\cr
+   arc@edge$line.stroke.opacity\cr
+   arc@edge$line.width\cr
+           
+The following five parameters control the tip:\cr
+   arc@edge$tip.stroke.opacity\cr
+   arc@edge$tip.stroke.color\cr
+   arc@edge$tip.stroke.width\cr
+   arc@edge$tip.fill.color\cr
+   arc@edge$tip.fill.opacity\cr}
 }}
 

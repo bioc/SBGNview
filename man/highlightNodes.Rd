@@ -4,53 +4,65 @@
 \alias{highlightNodes}
 \title{Highlight input nodes}
 \usage{
-highlightNodes(node.set = "all", node.set.id.type = "CompoundName",
-  glyphs.id.type = "pathwayCommons", cpd.or.gene = "compound",
-  stroke.color = "black", stroke.width = 10, stroke.opacity = 1,
-  show.glyph.id = FALSE, select.glyph.class = c(), label.x.shift = 0,
-  label.y.shift = 0, label.color = "black", label.font.size = NULL,
-  label.spliting.string = NULL, labels = NULL)
+highlightNodes(
+  node.set = "all",
+  node.set.id.type = "compound.name",
+  glyphs.id.type = "pathwayCommons",
+  mol.type = "cpd",
+  stroke.color = "black",
+  stroke.width = 10,
+  stroke.opacity = 1,
+  show.glyph.id = FALSE,
+  select.glyph.class = c(),
+  label.x.shift = 0,
+  label.y.shift = 0,
+  label.color = "black",
+  label.font.size = NULL,
+  label.spliting.string = NULL,
+  labels = NULL
+)
 }
 \arguments{
-\item{node.set}{A vector of character strings. Input node set that need to be highlighted. It can be any ID types supported by SBGNview.}
+\item{node.set}{A vector of character strings. Default: "all". Input molecule IDs whose nodes are to be highlighted. It can be any ID types supported by SBGNview.}
 
-\item{node.set.id.type}{A character string. ID type of input nodes.}
+\item{node.set.id.type}{A character string. Default: "compound.name". ID type of input nodes.}
 
-\item{glyphs.id.type}{A character string. ID type of nodes in SBGN-ML file, which is used as node IDs in the SBGNview object returned by the SBGNview() function.}
+\item{glyphs.id.type}{A character string. Default: "pathwayCommons". ID type of nodes in SBGN-ML file.}
 
-\item{cpd.or.gene}{A character string. One of "gene" or "compound". Currently highlight.node() only supports highlighting macromolecule and simple chemical nodes. This parameter is used to find the ID mapping between input node set IDs and glyph IDs.}
+\item{mol.type}{A character string. One of 'gene' or 'cpd' (default).}
 
-\item{stroke.color}{A character string. The vorder color of highlighted nodes.}
+\item{stroke.color}{A character string. Default: "black". The border color of highlighted nodes.}
 
-\item{stroke.width}{A character string. The border width of highlighted nodes.}
+\item{stroke.width}{Integer. Default: 10. The border stroke width of highlighted nodes.}
 
-\item{stroke.opacity}{Numeric}
+\item{stroke.opacity}{Numeric. Default: 1. The border stroke opacity of highlighted nodes.}
 
-\item{show.glyph.id}{Logic}
+\item{show.glyph.id}{Logical. Default: F. If set to 'TRUE', glyph IDs are plotted instead of their labels.}
 
-\item{select.glyph.class}{Character}
+\item{select.glyph.class}{Character vector. Select glyphs by class. It should be one of the values of XML attribute 'class' of a 'glyph' element. For example 'macromolecule', "simple chemical"}
 
-\item{label.x.shift}{Numeric}
+\item{label.x.shift}{Integer. Default: 0. Move labels horizontally.}
 
-\item{label.y.shift}{Numeric}
+\item{label.y.shift}{Integer. Default: 0. Move labels vertically.}
 
-\item{label.color}{Character}
+\item{label.color}{A character string. Default: "black". Change label color.}
 
-\item{label.font.size}{Numeric}
+\item{label.font.size}{Integer. Adjust label font size.}
 
-\item{label.spliting.string}{Character}
+\item{label.spliting.string}{A character vector. When we split text into multiple lines, these characters will be used to split label (where a new line can be created). For example: label.spliting.string = c(' ','-',';','/','_').}
 
-\item{labels}{Character}
+\item{labels}{A vector of character strings. The labels to display on the nodes of input molecules. The names of this vector should be the vector of 'node.set'. The values are the new labels to display.}
 }
 \value{
 A SBGNview obj
 }
 \description{
-Change node properties such as border color and width to highlight a list of input nodes. This function should be used as the second argument to function \code{\link{+.SBGNview}}.
+Change node properties such as border color and width to highlight a list of input nodes. This function should be used as the second argument to function. Run \code{help("+.SBGNview")} for more information.
 }
 \examples{
-data(SBGNview.obj)
-obj.new = SBGNview.obj + 
-       highlightNodes(node.set = c("tyrosine", "(+-)-epinephrine"),
-                      stroke.width = 4, stroke.color = "green") 
+\dontrun{
+obj.new <- SBGNview.obj + highlightNodes(node.set = c('tyrosine', '(+-)-epinephrine'),
+                                         stroke.width = 4, 
+                                         stroke.color = 'green') 
+}
 }

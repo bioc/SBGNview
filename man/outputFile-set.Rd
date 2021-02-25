@@ -2,25 +2,26 @@
 % Please edit documentation in R/SBGNview.obj.fun.R
 \name{outputFile<-}
 \alias{outputFile<-}
-\title{Set output file information for a SBGNview object}
+\title{Set or change output file information for a SBGNview object}
 \usage{
 outputFile(obj) <- value
 }
 \arguments{
-\item{obj}{No need to provide}
+\item{obj}{A SBGNview class object}
 
 \item{value}{No need to provide}
 }
 \value{
-A SBGNview object
+A SBGNview class object
 }
 \description{
-Set output file information for a SBGNview object
+Set or change output file information for a SBGNview object
 }
 \details{
-This function sets the output file path that can be recorded in a SBGNview object. When printing the SBGNview object, output image files will be generated using the output file.
+This function sets the output file path recorded in a SBGNview object.
 }
 \examples{
-data("SBGNview.obj" )
-outputFile(SBGNview.obj) = "./test.output"
+\dontrun{
+outputFile(SBGNview.obj) <- "test.output.file"
+}
 }

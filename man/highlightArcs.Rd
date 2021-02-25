@@ -4,27 +4,25 @@
 \alias{highlightArcs}
 \title{Highlight arcs by arc class}
 \usage{
-highlightArcs(class = "all", color = "black", line.width = 2,
-  tip.size = 6)
+highlightArcs(class = "all", color = "black", line.width = 2, tip.size = 6)
 }
 \arguments{
-\item{class}{String. The arc class to modify.}
+\item{class}{A character string. Default: "arc". The arc class to modify.}
 
-\item{color}{String.}
+\item{color}{A character string. Default: "black". The color of arcs with selected 'class'.}
 
-\item{line.width}{Numeric.}
+\item{line.width}{Numeric. Default: 2. Line thickness.}
 
-\item{tip.size}{Numeric}
+\item{tip.size}{Numeric. Default: 6. Tip size.}
 }
 \value{
-A function that modify a SBGNview object to change arc color.
+A SBGNview object
 }
 \description{
-This function creates another function that can modify a SBGNview object and modify arc. Normally we use it as an argument to \code{\link{+.SBGNview}} and modify a SBGNview object
+This function can modify a SBGNview object's arc. Normally we use it as an argument to \code{+.SBGNview} and modify a SBGNview object. Run \code{help("+.SBGNview")} for more information.
 }
 \examples{
-data(SBGNview.obj)
-obj.new = SBGNview.obj + 
-            highlightArcs(class = "production",color = "red") 
-            
+\dontrun{
+obj.new <- SBGNview.obj + highlightArcs(class = 'production', color = 'red') 
+}
 }

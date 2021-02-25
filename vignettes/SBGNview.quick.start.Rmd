@@ -1,16 +1,35 @@
+---
+title: "SBGNview Quick Start"
+author: 
+  - Weijun Luo, luo_weijun (AT) yahoo.com
+  - Kovidh Vegesna, kvegesna (AT) uncc.edu
+date:  "`r format(Sys.time(), '%d %B, %Y')`"
+output: 
+    bookdown::html_document2:
+      fig_caption: yes
+      number_sections: yes
+      toc: yes
+      toc_float: 
+        collapsed: false
+editor_options: 
+  chunk_output_type: console
+bibliography: REFERENCES.bib
+vignette: >
+  %\VignetteIndexEntry{Quick start SBGNview}
+  \usepackage[utf8]{inputenc}
+  %\VignetteEngine{knitr::rmarkdown}
+---
 
-# SBGNview 
+```{r , echo = FALSE, eval = TRUE, results = 'hide', message = FALSE, warning = FALSE}
+library(knitr)
+```
 
-[![](https://img.shields.io/badge/release%20version-1.4.1-blue.svg)](https://www.bioconductor.org/packages/SBGNview)
-[![](https://img.shields.io/badge/devel%20version-1.5.1-green.svg)](https://github.com/datapplab/SBGNview)
-
-
-## Overview
+# Overview
 We previously developed an R/BioConductor package called [Pathview](https://www.bioconductor.org/packages/pathview), which maps, integrates and visualizes a wide range of data onto KEGG pathway graphs. Since its publication, Pathview has been widely used in omics studies and data analyses, and has become the leading tool in its category. Here we introduce the SBGNview package, which adopts [Systems Biology Graphical Notation (SBGN)](https://sbgn.github.io/) and greatly extends the Pathview project by supporting multiple major pathway databases beyond KEGG.
 
 Key features:
 
-* Pathway diagram and definition by the widely adopted [SBGN standard formats](https://sbgn.github.io/);
+* Pathway definition by the widely adopted [Systems Biology Graphical Notation (SBGN)](https://sbgn.github.io/);
 
 * Supports multiple major pathway databases beyond KEGG ([Reactome](https://reactome.org/), [MetaCyc](https://metacyc.org/), [SMPDB](https://smpdb.ca/), [PANTHER](http://www.pantherdb.org/pathway/), [METACROP](https://metacrop.ipk-gatersleben.de/) etc) and user defined pathways;
 
@@ -20,16 +39,17 @@ Key features:
 
 * SBGN pathway data manipulation, processing, extraction and analysis.
 
-## Citation
+# Citation
 
 Please cite the following papers when using this open-source  package. This will help the project and our team:
 
 Luo W, Brouwer C. Pathview: an R/Biocondutor package for pathway-based data integration and visualization. Bioinformatics, 2013, 29(14):1830-1831, <a href=https://doi.org/10.1093/bioinformatics/btt285>doi: 10.1093/bioinformatics/btt285</a>
 
 
-## Installation
+# Installation
 
-### Prerequisites
+## Prerequisites
+
 *SBGNview* depends or imports from the following R packages:
 
 * xml2: parse SBGN-ML files
@@ -60,7 +80,7 @@ External dependencies (outside R):
 sudo apt install libxml2-dev libssl-dev libcurl4-openssl-dev librsvg2-dev
 ```
 
-### Install SBGNview
+## Install SBGNview
 Install SBGNview through Bioconductor: 
 ```{r install, eval = FALSE}
 BiocManager::install(c("SBGNview"))
@@ -75,8 +95,7 @@ Clone the Git repository:
 git clone https://github.com/datapplab/SBGNview.git
 ```
 
-
-## Quick example
+# Quick example {#quickexample}
 ```{r, echo = TRUE, eval = TRUE, results = 'hide', message = FALSE, warning = FALSE}
 library(SBGNview)
 # load demo dataset, SBGN pathway data collection and info, which may take a few seconds
@@ -91,10 +110,14 @@ SBGNview.obj <- SBGNview(
           ) 
 print(SBGNview.obj)
 ```
-Two image files (a svg file by default and a png file) will be created in the current working directory.
-<img src="inst/app/www/quick.start_P00001.svg">   
 
-As a unique and useful feature of SBGNview package, we can highlight nodes, edges and/or paths using the highlight functions. Please read the function documentation and main vignette for details.
+Two image files (a svg file by default and a png file) will be created in the current working directory.
+
+```{r quickStartFig, echo = FALSE,fig.cap="\\label{fig:quickStartFig}Quick start example: Adrenaline and noradrenaline biosynthesis pathway. "}
+include_graphics("quick.start_P00001.svg")
+```
+
+As a unique and useful feature of SBGNview package, we can highlight nodes, edges and/or paths using the highlight functions. Please read the function documentation and main vignette for details.{#quickhighlight}
 
 ```{r, echo = TRUE, eval = TRUE, results = 'hide', message = FALSE, warning = FALSE}
 outputFile(SBGNview.obj) <- "quick.start.highlights"
@@ -112,13 +135,24 @@ SBGNview.obj + highlightArcs(class = "production",color = "red") +
                              path.stroke.width = 5,
                              tip.size = 10 )
 ```
-<img src="inst/app/www/quick.start.highlights_P00001.svg">   
 
-## Additional information
+```{r quickStartFigHighlight, echo = FALSE,fig.cap="\\label{fig:quickStartFigHighlight}Quick start example: Highlight arcs, nodes, and path."}
+include_graphics("quick.start.highlights_P00001.svg")
+```
+
+# Additional information
 This tutorial is just a brief introduction and quick start. For more info, please check the package documentation and main vignettes.
+
 * [SBGNview main tutorial](https://bioconductor.org/packages/devel/bioc/vignettes/SBGNview/inst/doc/SBGNview.Vignette.html)
+
 * [Pathway analysis workflow using SBGNview](https://bioconductor.org/packages/devel/bioc/vignettes/SBGNview/inst/doc/pathway.enrichment.analysis.html)
 
 For more info on SBGN, please check the official [SBGN project website](https://sbgn.github.io/)
 
 For any questions, please contact Kovidh Vegesna (kvegesna [AT] uncc.edu) or Weijun Luo (luo_weijun [AT] yahoo.com)
+
+# Session Info
+```{r}
+sessionInfo()
+```
+
