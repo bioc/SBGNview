@@ -12,7 +12,7 @@ Description:
    including glyph and edge attributes, graph layout and sub-pathway
    highlight; 5. SBGN pathway data manipulation, processing,
    extraction and analysis.
-Version: 1.4.1
+Version: 1.5.1
 Author:
     Xiaoxi Dong*, Kovidh Vegesna*, Weijun Luo
 Maintainer: Weijun Luo <luo_weijun@yahoo.com>
